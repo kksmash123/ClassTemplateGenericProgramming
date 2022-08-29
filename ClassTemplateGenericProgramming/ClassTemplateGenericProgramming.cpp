@@ -25,8 +25,8 @@ public:
 
 };
 
-//type 2 - Generic class with generic type
 
+//type 2 - Generic class with generic type
 template <class T1,class T2>
 class c2
 {
@@ -47,8 +47,8 @@ public:
 
 };
 
-//type 3 - generic class with defalut datatype 
 
+//type 3 - generic class with defalut datatype 
 template<class T1 , class T2 = string>
 class c3
 {
@@ -66,6 +66,33 @@ public:
     }
 
 };
+
+//type 4 - generic class with explicit specification for certain datatype 
+//this is done with base class 1
+template<>
+class c1<string>
+{
+    string data1;
+    string data2;
+
+public:
+    c1(string x, string y)
+    {
+        
+        data2 = x;
+        data1 = y;
+    }
+
+    void show()
+    {
+        cout << "explicit specification for string : " << endl;
+        cout << "data1 :" << data1 << " | data2 : " << data2 << endl;
+
+    }
+
+};
+
+
 
 
 
@@ -100,6 +127,7 @@ int main()
     cout << " class c2 object 4 : " << endl;
     c2ob4.show();
 
+
     //type 3 
     c3<int > c3ob1(1, "keerthana");
     c3<char, char> c3ob2('A', 'B');
@@ -112,13 +140,9 @@ int main()
     cout << "class c3 object3 : " << endl;
     c3ob3.show();
 
-
-
-
-
-
-
-
-
+    //type 4-- overloading the c1 for string datatype
+    cout << "overloading the function template for class c1 with string " << endl;
+    c1<string> c1ob5("pavithra","keerthana");
+    c1ob5.show();
 }
 
